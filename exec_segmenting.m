@@ -5,28 +5,31 @@ function exec_segmenting()
     close all;
     
    % Images root directory
-   dir_root = 'D:\DOCTORATE_DEGREE\THESIS\classified_panoramic_X-ray_images_dataset\';
+%    dir_root = 'D:\DOCTORATE_DEGREE\THESIS\classified_panoramic_X-ray_images_dataset\';
+   
+   dir_root = '/home/khangnlbk/ET/NewFolder/dental-image-master/data/UFBA_UESC_DENTAL_IMAGES/classified_panoramic_X-ray_images_dataset/';
     
-   % Directory of the images of the CATEGORY 1
-   dir_cat1 = [dir_root 'cat1\cropped_images\'];
+   
+    % Directory of the images of the CATEGORY 1
+   dir_cat1 = [dir_root 'cat1/cropped_images/'];
    % Directory of the images of the CATEGORY 2
-   dir_cat2 = [dir_root 'cat2\cropped_images\'];
+   dir_cat2 = [dir_root 'cat2/cropped_images/'];
    % Directory of the images of the CATEGORY 3
-   dir_cat3 = [dir_root 'cat3\cropped_images\'];
+   dir_cat3 = [dir_root 'cat3/cropped_images/'];
    % Directory of the images of the CATEGORY 4
-   dir_cat4 = [dir_root 'cat4\cropped_images\'];
+   dir_cat4 = [dir_root 'cat4/cropped_images/'];
    % Directory of the images of the CATEGORY 5
-   dir_cat5 = [dir_root 'cat5\cropped_images\'];
+   dir_cat5 = [dir_root 'cat5/cropped_images/'];
    % Directory of the images of the CATEGORY 6
-   dir_cat6 = [dir_root 'cat6\cropped_images\'];
+   dir_cat6 = [dir_root 'cat6/cropped_images/'];
    % Directory of the images of the CATEGORY 7
-   dir_cat7 = [dir_root 'cat7\cropped_images\'];
+   dir_cat7 = [dir_root 'cat7/cropped_images/'];
    % Directory of the images of the CATEGORY 8
-   dir_cat8 = [dir_root 'cat8\cropped_images\'];
+   dir_cat8 = [dir_root 'cat8/cropped_images/'];
    % Directory of the images of the CATEGORY 9
-   dir_cat9 = [dir_root 'cat9\cropped_images\'];
+   dir_cat9 = [dir_root 'cat9/cropped_images/'];
    % Directory of the images of the CATEGORY 10
-   dir_cat10 = [dir_root 'cat10\cropped_images\'];
+   dir_cat10 = [dir_root 'cat10/cropped_images/'];
    
    % images to be processed
    proc_segmenting(dir_cat2);
@@ -39,10 +42,10 @@ function  proc_segmenting(dir_cat)
        tot_images = size(image_files, 1);
        
       % Directory of binary images of the category
-      binary_directory = [dir_cat 'annotated_images\'];
+      binary_directory = [dir_cat 'annotated_images/'];
       
        % Directory of binary images of mouths of the category
-      binary_directory_mouth = [dir_cat 'annotated_images\Mouth\'];
+      binary_directory_mouth = [dir_cat 'annotated_images/mouth/'];
 
       %Variable to add all averages;
       SumAverage = 0;
@@ -86,7 +89,7 @@ function  proc_segmenting(dir_cat)
                 filenameBwNegMouth(filenameBwNegMouth==0)=-1;
 
             %Creating the new array on top of the mask
-            %A matriz deverá ser processada no tipo double. Para visualizar será
+            %A matriz deverï¿½ ser processada no tipo double. Para visualizar serï¿½
             imm = double(imgOriGray);
             imm(imm<=0)=-1;
             
@@ -116,21 +119,21 @@ function  proc_segmenting(dir_cat)
             
 % imshow(filenameBw)
 %             watershed_marker_controlled_gil_jader(imgOri, filenameBwNegMouth, dir_cat, i);
-                       
+%                        
 %             region_splitting_merging_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth, i, Entropy);
-             
+%              
 %             basic_global_thresholding_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth, Average, maxValue, deltaT, i)
-             
+%              
 %             fcmeans_gil_jader(dir_cat, imgOri, filenameBwNegMouth,  i)
-
+% 
 %             canny_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth,  i)
-   
+%    
 %             sobel_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth,  i)
-   
+%    
 %             active_contour_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth, i)
-
+% 
 %             level_set_gil_jader(dir_cat, imgOriGray, filenameBwNegMouth, i)
-
+% 
 %             localthresh_gil_jader(imgOriGray, ones(3), 1,1, 'global',i, filenameBwNegMouth, dir_cat);
 %             SIG = stdfilt(uint8(immBoca), ones(3));
 %             figure, imshow(SIG, [])
@@ -188,10 +191,10 @@ function segment_region_growing(dir_cat, I, num, imbw, ROI)
         result = double(imgSegmented) .* ROI;
         
         % Directory to record segmented images
-        dir_region_growing = [dir_cat 'segmented_images\region\region_gowin\'];
+        dir_region_growing = [dir_cat 'segmented_images/region/region_gowin/'];
         imwrite(imgSegmented,[dir_region_growing,num2str(num),'.bmp'],'bmp');
         % Directory to record the segmented images considering only the ROI obtained
-        dir_region_growing_roi = [dir_cat 'segmented_images\region\region_gowin\roi\'];
+        dir_region_growing_roi = [dir_cat 'segmented_images/region/region_gowin/roi/'];
         imwrite(result,[dir_region_growing_roi,num2str(num),'.bmp'],'bmp');
    
 end 
