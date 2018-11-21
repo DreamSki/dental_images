@@ -6,4 +6,4 @@ Panoramic X-ray image segmentation
 ### Segmentation of other types of medical images
 
 ## dataset
-### link download:  https://drive.google.com/open?id=1QLLrNlvffcKT15PKJyzbI1x_9Zyo4prK
+### Source: https://github.com/IvisionLab/dental-image
